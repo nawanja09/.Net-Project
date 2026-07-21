@@ -1,41 +1,39 @@
 "use client";
 
-import { useEffect } from "react";
-import { useRouter } from "next/navigation";
 import { useAuth } from "../../lib/auth-context";
 
+function StatCard({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="bg-surface border border-line rounded-lg p-5">
+      <p className="font-mono text-[11px] uppercase tracking-wide text-ink-soft mb-2">{label}</p>
+      <p className="font-display text-2xl font-semibold text-ink">{value}</p>
+    </div>
+  );
+}
+
 export default function DashboardPage() {
-  const { user, loading, logout } = useAuth();
-  const router = useRouter();
-
-  useEffect(() => {
-    if (!loading && !user) {
-      router.push("/login");
-    }
-  }, [loading, user, router]);
-
-  if (loading || !user) return null; // avoid a flash of content before redirect
+  const { user } = useAuth();
+  if (!user) return null;
 
   return (
-    <div className="min-h-screen bg-gray-50 p-8">
-      <div className="flex justify-between items-center mb-8">
-        <div>
-          <h1 className="text-2xl font-semibold">{user.companyName}</h1>
-          <p className="text-gray-600 text-sm">
-            Signed in as {user.email} ({user.role})
-          </p>
-        </div>
-        <button
-          onClick={logout}
-          className="text-sm border px-4 py-2 rounded hover:bg-gray-100"
-        >
-          Log out
-        </button>
+    <div>
+      <div className="mb-8">
+        <h2 className="font-display text-3xl font-semibold text-ink mb-1">Overview</h2>
+        <p className="text-ink-soft text-sm">A quick look at where things stand today.</p>
       </div>
 
-      <p className="text-gray-500">
-        This is your dashboard. Employee, department, attendance, and leave pages go here next.
-      </p>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+        <StatCard label="Employees" value="—" />
+        <StatCard label="Present today" value="—" />
+        <StatCard label="Pending leave" value="—" />
+        <StatCard label="Departments" value="—" />
+      </div>
+
+      <div className="bg-surface border border-line rounded-lg p-6">
+        <p className="text-sm text-ink-soft">
+          Employee, attendance, and leave summaries will populate here once those pages are connected.
+        </p>
+      </div>
     </div>
   );
 }
