@@ -4,12 +4,13 @@ import { useEffect } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 import { useAuth } from "../../lib/auth-context";
-import { IconGrid, IconUsers, IconFolder, IconClock, IconCalendar } from "../../components/icons";
+import { IconGrid, IconUsers, IconFolder, IconClock, IconCalendar, IconBadge } from "../../components/icons";
 
 const NAV_ITEMS = [
   { href: "/dashboard", label: "Overview", icon: IconGrid },
   { href: "/dashboard/employees", label: "Employees", icon: IconUsers },
   { href: "/dashboard/departments", label: "Departments", icon: IconFolder },
+  { href: "/dashboard/designations", label: "Designations", icon: IconBadge },
   { href: "/dashboard/attendance", label: "Attendance", icon: IconClock },
   { href: "/dashboard/leave", label: "Leave", icon: IconCalendar },
 ];

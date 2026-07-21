@@ -47,3 +47,12 @@ export function IconCalendar({ className }: IconProps) {
     </svg>
   );
 }
+
+export function IconBadge({ className }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" className={className}>
+      <path d="M12 2a2 2 0 0 1 2 2v16a2 2 0 0 1-4 0V4a2 2 0 0 1 2-2z" />
+      <path d="M8.5 7h7M8.5 11h7M8.5 15h7" />
+    </svg>
+  );
+}
