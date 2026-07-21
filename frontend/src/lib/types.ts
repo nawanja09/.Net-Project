@@ -41,3 +41,13 @@ export interface Designation {
   title: string;
   employeeCount: number;
 }
+
+export interface AttendanceRecord {
+  id: number;
+  employeeId: number;
+  employeeName: string;
+  date: string;
+  checkIn: string | null;
+  checkOut: string | null;
+  status: string;
+}
