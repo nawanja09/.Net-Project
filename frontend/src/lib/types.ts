@@ -51,3 +51,22 @@ export interface AttendanceRecord {
   checkOut: string | null;
   status: string;
 }
+
+export interface LeaveRequestItem {
+  id: number;
+  employeeId: number;
+  employeeName: string;
+  startDate: string;
+  endDate: string;
+  daysRequested: number;
+  reason: string;
+  status: string;
+  approvedByName: string | null;
+}
+
+export interface LeaveBalanceItem {
+  leaveType: string;
+  totalDays: number;
+  usedDays: number;
+  remainingDays: number;
+}
