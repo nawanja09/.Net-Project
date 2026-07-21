@@ -49,6 +49,10 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 // JWT service (our own helper class)
 builder.Services.AddScoped<JwtService>();
 
+// Current user service (to get info about the logged-in user)
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddScoped<CurrentUserService>();
+
 // JWT Authentication
 builder.Services.AddAuthentication(options =>
 {
